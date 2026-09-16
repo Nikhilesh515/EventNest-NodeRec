@@ -1,0 +1,10 @@
+.git
+**/.git
+**/node_modules
+**/dist
+**/coverage
+EventNest-Node
+*.md
+.env
+.env.*
+docker-compose*.yml
