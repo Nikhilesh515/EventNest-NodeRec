@@ -35,7 +35,12 @@ services:
       dockerfile: Dockerfile
       target: build
     image: eventnest-exp-migrate:local
-    command: sh /scripts/migrate.sh
+    # Strip any CR characters from the bind-mounted script before executing so
+    # Windows checkouts with CRLF line endings work in the Alpine container.
+    command:
+      - sh
+      - -c
+      - tr -d '\r' < /scripts/migrate.sh | sh -s
     environment:
       NODE_ENV: production
       DATABASE_URL: postgres://postgres:postgres@postgres:5432/eventnest

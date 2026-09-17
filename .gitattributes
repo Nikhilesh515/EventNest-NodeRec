@@ -1,0 +1,5 @@
+# Shell scripts and container config must stay LF so BusyBox sh in Linux
+# containers can execute bind-mounted scripts (Windows checkouts default to CRLF).
+*.sh text eol=lf
+docker/** text eol=lf
+*.sql text eol=lf
